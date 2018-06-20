@@ -1,0 +1,27 @@
+
+@Autowired ServletContext objContext;
+
+
+InputStream input = null;
+
+ Properties prop = new Properties();
+
+ String propertiespath = objContext.getRealPath("Resources" +File.separator+"DataBase.properties");
+
+input = new FileInputStream(propertiespath);
+
+prop.load(input);
+
+String msg = prop.getProperty("registration_message");
+
+msg= msg.replaceAll("_type_", "Farmer");
+			msg= msg.replaceAll("_phone_", farRegs.getMobile());
+
+msg= msg.replaceAll("_password_", user.getPassword());
+
+
+SendSMS.sendSMS(msg, farRegs.getMobile(), objContext);
+
+
+
+registration_message= Thank you for registering with Agmarks. \nYou are successfully registered as a _type_. \n Username:_phone_ \n PIN:_password_ \nFrom: www.agmarks.com
