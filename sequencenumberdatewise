@@ -1,0 +1,44 @@
+ 
+	
+		public void printRandomnumber () throws Exception {
+		 
+		 
+		 String record ="1808090002";
+		 
+		 DateFormat dateFormat = new SimpleDateFormat("YY MM dd HH mm ss");
+			Date date = new Date();
+			System.out.println(dateFormat.format(date).replaceAll(" ","")); //2016/11/16 12:08:43
+			
+			String date2 =dateFormat.format(date).replaceAll(" ","").substring(0,6 );
+			
+			//String lastRecord = "180809";
+			//String lastRecord2 = "0001";
+			String lastRecord = record.substring(0, 6);
+			String lastRecord2 = record.substring(6,10 );
+			
+			String finalString ="";
+			
+			
+			if(!date2.equals(lastRecord))
+			{
+				//
+				finalString =finalString+"0001";
+				
+				
+			}
+			else
+			{
+				Integer lastRecored2Int  = Integer.parseInt(lastRecord2);
+				lastRecored2Int =lastRecored2Int+1;
+				
+				String  part2 = String.format("%04d", lastRecored2Int);
+				finalString =lastRecord+part2;	
+				
+			}
+			
+			
+			System.out.println(finalString);
+			
+			
+			
+	 }
